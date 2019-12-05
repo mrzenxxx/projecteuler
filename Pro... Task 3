@@ -1,0 +1,29 @@
+/*Largest prime factor
+
+Problem 3
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?*/
+
+let isP = x => {
+  for (let i=1; i<=x; i++){
+    if(x%i===0&&i!==1&&i!==x){
+      return false;
+    }
+  }
+  return true;
+}
+let res=1;
+let bpf = n => {
+  for (let j=1; j<=n; j++){
+    if(isP(j)&&n%j===0){
+      n/=j;
+      res=j;
+    }
+  }
+  return res;
+}
+console.log(bpf(13195));
+console.log(bpf(600851475143));
+
+//answer: 6857
